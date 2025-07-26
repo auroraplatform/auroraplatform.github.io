@@ -28,6 +28,15 @@ jobs:
           cache: 'npm'
           cache-dependency-path: proper-photon/package-lock.json
       
+      - name: Debug info
+        run: |
+          echo "Node version: $(node --version)"
+          echo "NPM version: $(npm --version)"
+          echo "Current directory: $(pwd)"
+          echo "Directory contents: $(ls -la)"
+          echo "Proper-photon contents: $(ls -la proper-photon/)"
+        working-directory: ./
+      
       - name: Install dependencies
         run: npm ci
         working-directory: ./proper-photon
