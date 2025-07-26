@@ -4,20 +4,28 @@ import starlight from '@astrojs/starlight';
 
 // https://astro.build/config
 export default defineConfig({
+	site: 'https://auroraplatform.github.io',
+
 	integrations: [
 		starlight({
-			title: 'My Docs',
-			social: [{ icon: 'github', label: 'GitHub', href: 'https://github.com/withastro/starlight' }],
+			title: 'Aurora',
+			description: 'An open-source, real-time query platform for visualizing and analyzing Kafka event streams with ClickHouse, Grafana, and AI',
+
+			logo: {
+				src: './src/assets/aurora_logo.png',
+				alt: 'Aurora Platform logo',
+			},
+			social: [{ icon: 'github', label: 'GitHub', href: 'https://github.com/auroraplatform' }],
 			sidebar: [
 				{
-					label: 'Guides',
+					label: 'Case Study',
 					items: [
 						// Each item here is one entry in the navigation menu.
 						{ label: 'Example Guide', slug: 'guides/example' },
 					],
 				},
 				{
-					label: 'Reference',
+					label: 'References',
 					autogenerate: { directory: 'reference' },
 				},
 			],
