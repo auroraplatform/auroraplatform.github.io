@@ -1,0 +1,53 @@
+/* Team section responsive layout */
+.team-section {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  margin-top: 2rem;
+  max-width: 100%;
+  align-items: stretch;
+}
+
+@media (min-width: 640px) {
+  .team-section {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.team-member {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  justify-content: flex-start;
+  height: 100%;
+  min-height: 320px;
+  padding-top: 0;
+  margin-top: 0;
+}
+
+.team-links {
+  display: flex;
+  gap: 1rem;
+}
+
+/* Ensure consistent image positioning */
+.team-member img {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}
+
+/* Force icon sizes */
+.team-links svg {
+  width: 28px !important;
+  height: 28px !important;
+  min-width: 28px !important;
+  min-height: 28px !important;
+}
+
+.team-links .sl-icon {
+  width: 28px !important;
+  height: 28px !important;
+  min-width: 28px !important;
+  min-height: 28px !important;
+} 

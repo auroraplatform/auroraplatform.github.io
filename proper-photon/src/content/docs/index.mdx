@@ -11,32 +11,98 @@ hero:
     - text: Read the Case Study
       link: /guides/example/
       icon: right-arrow
-    - text: See the Project on GitHub
+    - text: View on GitHub
       link: https://github.com/auroraplatform
       icon: external
       variant: minimal
 ---
 
-import { Card, CardGrid } from '@astrojs/starlight/components';
+import { Card, CardGrid, Icon } from '@astrojs/starlight/components';
+import '../../styles/team.css';
+import maticImage from '../../assets/matic.jpg';
+import kanaImage from '../../assets/kana.jpeg';
+import patriciaImage from '../../assets/patricia.jpeg';
 
-## Next steps
+## Features
 
 <CardGrid stagger>
-	<Card title="Deploy" icon="pencil">
-		Use one simple command in our CLI to fully deploy Aurora. All you need is the AWS CLI, installed and configured.
+	<Card title="Deploy Instantly" icon="rocket">
+		Launch Aurora with a single command using our CLI. It’s fast, simple, and ready for production in minutes.
 	</Card>
-	<Card title="Add new Kafka topics" icon="add-document">
-		Quickly connect to any Kafka topic you want to analyze, visualize or prompt.
+	<Card title="Connect Your Kafka Streams" icon="seti:pipeline">
+		Easily connect to any Kafka topic. Start analyzing, visualizing, or prompting events with just a few clicks.
 	</Card>
-	<Card title="Query in real-time" icon="setting">
-		Our web app combines the historical analysis of your streams with real-time updates, powered by ClickHouse.
+	<Card title="Query in Real-Time" icon="magnifier">
+		Analyze your Kafka streams with live insights. Our web app seamlessly blends historical data with real-time analytics, powered by ClickHouse.
 	</Card>
-	<Card title="Customize visualizations" icon="open-book">
-		Aurora includes a full installation of Grafana, automatically ready to display visualizations for any newly connected Kafka topic.
+	<Card title="Customize Your Dashboards" icon="seti:default">
+		Aurora comes with a fully integrated Grafana setup, ready to visualize any Kafka topic you connect. No manual configuration required.
 	</Card>
-	<Card title="Prompt away" icon="pencil">
-		Harness the power of AI to chat with your Kafka streams, their historical data and real-time updates.
+	<Card title="Prompt Your Data" icon="comment-alt">
+		Leverage AI to chat directly with your Kafka streams. Explore historical trends and live data in natural language.
 	</Card>
 </CardGrid>
 
 ## Meet the Team
+
+<div class="team-section">
+  <div class="team-member">
+    <img 
+      src={kanaImage.src} 
+      alt="Kana" 
+      style="width: 192px; height: 192px; border-radius: 50%; object-fit: cover; margin-bottom: 1.5rem; border: 3px solid #e2e8f0;" 
+    />
+    <h3 style="font-weight: 600; font-size: 1.5rem; margin-bottom: 1rem;">Kana Miyasato</h3>
+    <div class="team-links">
+      <a href="mailto:miyasatoka@gmail.com" style="color: #64748b; transition: color 0.2s;">
+        <Icon name="email" style="width: 36px; height: 36px;" />
+      </a>
+      <a href="https://www.linkedin.com/in/kanamiyasato/" target="_blank" rel="noopener" style="color: #64748b; transition: color 0.2s;">
+        <Icon name="linkedin" style="width: 36px; height: 36px;" />
+      </a>
+      <a href="https://github.com/kanamiyasato" target="_blank" rel="noopener" style="color: #64748b; transition: color 0.2s;">
+        <Icon name="github" style="width: 36px; height: 36px;" />
+      </a>
+    </div>
+  </div>
+  
+  <div class="team-member">
+    <img 
+      src={maticImage.src} 
+      alt="Matic" 
+      style="width: 192px; height: 192px; border-radius: 50%; object-fit: cover; margin-bottom: 1.5rem; border: 3px solid #e2e8f0;" 
+    />
+    <h3 style="font-weight: 600; font-size: 1.5rem; margin-bottom: 1rem;">Matic Kocijančič</h3>
+    <div class="team-links">
+      <a href="mailto:matickoco@gmail.com" style="color: #64748b; transition: color 0.2s;">
+        <Icon name="email" style="width: 36px; height: 36px;" />
+      </a>
+      <a href="https://www.linkedin.com/in/matickocijancic/" target="_blank" rel="noopener" style="color: #64748b; transition: color 0.2s;">
+        <Icon name="linkedin" style="width: 36px; height: 36px;" />
+      </a>
+      <a href="https://github.com/kocijancic" target="_blank" rel="noopener" style="color: #64748b; transition: color 0.2s;">
+        <Icon name="github" style="width: 36px; height: 36px;" />
+      </a>
+    </div>
+  </div>
+  
+  <div class="team-member">
+    <img 
+      src={patriciaImage.src} 
+      alt="Patricia" 
+      style="width: 192px; height: 192px; border-radius: 50%; object-fit: cover; margin-bottom: 1.5rem; border: 3px solid #e2e8f0;" 
+    />
+    <h3 style="font-weight: 600; font-size: 1.5rem; margin-bottom: 1rem;">Patricia Carlos</h3>
+    <div class="team-links">
+      <a href="mailto:patricia.k.carlos@gmail.com" style="color: #64748b; transition: color 0.2s;">
+        <Icon name="email" style="width: 36px; height: 36px;" />
+      </a>
+      <a href="https://www.linkedin.com/in/pkcarlos/" target="_blank" rel="noopener" style="color: #64748b; transition: color 0.2s;">
+        <Icon name="linkedin" style="width: 36px; height: 36px;" />
+      </a>
+      <a href="https://github.com/pkcarlos" target="_blank" rel="noopener" style="color: #64748b; transition: color 0.2s;">
+        <Icon name="github" style="width: 36px; height: 36px;" />
+      </a>
+    </div>
+  </div>
+</div>
