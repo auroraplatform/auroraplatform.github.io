@@ -12,7 +12,8 @@ export default defineConfig({
 			description: 'An open-source, real-time query platform for visualizing and analyzing Kafka event streams with ClickHouse, Grafana, and AI',
 
 			logo: {
-				src: './src/assets/aurora_logo.png',
+				light: './src/assets/aurora_logo.png',
+				dark: './src/assets/aurora_logo_dark.png',
 				alt: 'Aurora Platform logo',
 			},
 			social: [{ icon: 'github', label: 'GitHub', href: 'https://github.com/auroraplatform' }],
