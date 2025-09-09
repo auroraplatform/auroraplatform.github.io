@@ -4,7 +4,7 @@ description: Get started building your docs site with Starlight.
 template: splash
 
 hero:
-  tagline: An open-source, real-time query platform for visualizing and analyzing Kafka event streams with ClickHouse, Grafana, and AI.
+  tagline: An open-source, real-time query platform for analyzing and visualizing Kafka event streams with ClickHouse, Grafana, and AI.
   image:
     file: ../../assets/logo_transparent.png
   actions:
@@ -18,6 +18,8 @@ hero:
 ---
 
 import { Card, CardGrid, Icon } from '@astrojs/starlight/components';
+import { LinkCard } from '@astrojs/starlight/components';
+import { Code } from 'astro-expressive-code/components'
 import '../../styles/team.css';
 import maticImage from '../../assets/matic.jpg';
 import kanaImage from '../../assets/kana.jpeg';
@@ -35,30 +37,26 @@ import patriciaImage from '../../assets/patricia.jpeg';
 	<Card title="Query in Real-Time" icon="magnifier">
 		Analyze your Kafka streams with live insights. Our web app seamlessly blends historical data with real-time analytics, powered by ClickHouse.
 	</Card>
+  <Card title="Customize Your Dashboards" icon="seti:default">
+		Aurora comes with a fully integrated Grafana setup, ready to visualize any Kafka topic you connect. No manual configuration required.
+	</Card>	
   <Card title="Prompt Your Data" icon="comment-alt">
 		Leverage AI to chat directly with your Kafka streams. Explore historical trends and live data in natural language.
 	</Card>
-	<Card title="Customize Your Dashboards" icon="seti:default">
-		Aurora comes with a fully integrated Grafana setup, ready to visualize any Kafka topic you connect. No manual configuration required.
-	</Card>	
 </CardGrid>
 
 ## Next Steps
 
-<CardGrid>
-	<Card title="Install the Aurora CLI" icon="cloud-download">
-		`npm install -g aurora-platform-cli`
-	</Card>
-	<Card title="Deploy Aurora to AWS" icon="rocket">
-		Once the CLI is installed, run the `aurora deploy` command. Make sure you're authenticated with AWS CLI first.
-	</Card>
-  <Card title="Connect, Query, Visualize" icon="starlight">
-		When deployment completes, you'll receive a link to your Aurora web app. From there, you can connect to all your Kafka topics, query them using natural language, and access your fully integrated Grafana instance.
-	</Card>
-	<Card title="Uninstall Aurora" icon="close">
-		To remove Aurora from your AWS account, run `aurora destroy`. To uninstall the CLI, simply use the standard `npm uninstall -g aurora-platform-cli`.
-	</Card>
-</CardGrid>
+<Code 
+code="# install the CLI
+npm install -g aurora-platform-cli
+
+# Deploy to AWS
+aurora deploy"
+lang="shell" 
+/>
+
+<LinkCard title="Read the Case Study" description="See how we built Aurora, from solving technical challenges to building a platform that's both user-friendly and production-ready." href="/guides/authoring-content/" />
 
 ## Meet the Team
 
