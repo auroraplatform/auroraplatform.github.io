@@ -49,6 +49,7 @@ Companies facing these demands often encounter a tough choice between managed se
 - **Zero vendor lock-in**: All infrastructure runs in your AWS account
 - **Multi-interface access**: Natural language queries, SQL queries, and Grafana dashboards
 - **ClickHouse performance**: Columnar storage optimized for "high-performance analytics [...] with high ingestion rates" (Schulze et al., 2024, p. 3731)
+**Grafana Integration**: Built-in Grafana instance, configured and connected
 - **Automated deployment**: Single command deploys the entire stack
 - **Cost efficiency**: Expenses limited to AWS hosting and OpenAI tokens
 - **Open source**: Full transparency and customization capability
