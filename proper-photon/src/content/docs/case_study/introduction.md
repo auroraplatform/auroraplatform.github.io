@@ -33,17 +33,17 @@ This creates a fundamental disconnect. Data teams need to ask questions like:
 
 With traditional Kafka tooling, even simple questions require building custom consumers and complex streaming logic. And business users who want to ask questions in natural language (e.g., "How many orders did we get from California this week?") are completely blocked without technical intervention.
 
+<img src="/src/assets/case-study/introduction/event-streams-as-data-silos.png" style="width: 100%; height: auto;" class="responsive-image" />
+
 ## Market Context and Positioning
 
 Consider an e-commerce platform that streams user behavior through Kafka: page views, cart additions, purchases, etc. The analytics team wants to compute real-time conversion rates and build dashboards for stakeholders, while business users want to ask ad-hoc questions about customer behavior without writing SQL.
 
 Companies facing these demands often encounter a tough choice between managed services for Kafka analytics or building a custom infrastructure, each with its own set of trade-offs:
 
-**Managed Services** (Tinybird, StarTree): Offer powerful features but introduce vendor dependencies and recurring costs.
-
-**DIY Solutions**: Provide maximum flexibility but require significant engineering resources for infrastructure management, monitoring, and scaling.
-
-**Aurora**, on the other hand, **aims to combine the ease of managed services with the control of self-hosted solutions**. It automatically provisions and manages the necessary infrastructure while keeping everything within your AWS environment, with both technical and non-technical users able to extract insights through natural language, SQL, or visual dashboards.
+- **Managed Services** (Tinybird, StarTree): Offer powerful features but introduce vendor dependencies and recurring costs.
+- **DIY Solutions**: Provide maximum flexibility but require significant engineering resources for infrastructure management, monitoring, and scaling.
+- **Aurora**, on the other hand, **aims to combine the ease of managed services with the control of self-hosted solutions**. It automatically provisions and manages the necessary infrastructure while keeping everything within your AWS environment, with both technical and non-technical users able to extract insights through natural language, SQL, or visual dashboards.
 
 ### Key Differentiators
 - **Zero vendor lock-in**: All infrastructure runs in your AWS account
@@ -54,25 +54,43 @@ Companies facing these demands often encounter a tough choice between managed se
 - **Cost efficiency**: Expenses limited to AWS hosting and OpenAI tokens
 - **Open source**: Full transparency and customization capability
 
+<img src="/src/assets/case-study/introduction/comparison-chart.png" style="width: 100%; height: auto;" class="responsive-image" />
+
 ## Technical Challenges
 
 Building Aurora required solving several core engineering problems. The first major challenge was **high-performance data ingestion**, which involved streaming events while maintaining ordering guarantees, handling schema evolution, and optimizing for efficient columnar storage. The second key area was **natural language query processing**, where advanced language models are combined with dynamic schema context to translate business questions into efficient database queries. The third challenge was supporting **real-time visualization**, achieved by automatically provisioning a suitable BI tool with appropriate data source configurations.
 
 Then we needed to bring everything together in an **intuitive web app** that allowed users to manage connections, run queries, and access visualizations seamlessly. Finally, **infrastructure automation** played a crucial role, enabling the deployment and configuration of a distributed system stack without any manual intervention.
 
+<img src="/src/assets/case-study/introduction/event-streams-as-data-silos-aurora.png" style="width: 100%; height: auto;" class="responsive-image" />
+
 ## Aurora Architecture Overview
 
 Our answer to these challenges consists of five core components we engineered:
+<div class="icon-list">
+ <p>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><g fill="none" stroke="#3d50f5" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12s4.477 10 10 10"/><path stroke-linecap="round" stroke-linejoin="round" d="M13 2.05S16 6 16 12m-5 9.95S8 18 8 12s3-9.95 3-9.95M2.63 15.5H12m-9.37-7h18.74"/><path d="M21.879 17.917c.494.304.463 1.043-.045 1.101l-2.567.291l-1.151 2.312c-.228.459-.933.234-1.05-.334l-1.255-6.116c-.099-.48.333-.782.75-.525z" clip-rule="evenodd"/></g></svg>
+    Aurora Web App: A mobile-first web application built with TypeScript, Next.js, and Tailwind, featuring a custom three-page layout — Connect, Query, and Visualize — that highlights the platform’s core functionality.
+  </p>
+  <p>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="none" stroke="#3d50f5" stroke-linecap="round" stroke-width="1.5" d="M4.513 19.487c2.512 2.392 5.503 1.435 6.7.466c.618-.501.897-.825 1.136-1.065c.837-.777.784-1.555.24-2.177c-.219-.249-1.616-1.591-2.956-2.967c-.694-.694-1.172-1.184-1.582-1.58c-.547-.546-1.026-1.172-1.744-1.154c-.658 0-1.136.58-1.735 1.179c-.688.688-1.196 1.555-1.375 2.333c-.539 2.273.299 3.888 1.316 4.965Zm0 0L2 21.999M19.487 4.515c-2.513-2.394-5.494-1.42-6.69-.45c-.62.502-.898.826-1.138 1.066c-.837.778-.784 1.556-.239 2.178c.078.09.31.32.635.644m7.432-3.438c1.017 1.077 1.866 2.71 1.327 4.985c-.18.778-.688 1.645-1.376 2.334c-.598.598-1.077 1.179-1.735 1.179c-.718.018-1.09-.502-1.639-1.048m3.423-7.45L22 2m-5.936 9.964c-.41-.395-.994-.993-1.688-1.687c-.858-.882-1.74-1.75-2.321-2.325m4.009 4.012l-1.562 1.525m-3.99-3.984l1.543-1.553"/></svg>
+    Aurora Kafka-to-ClickHouse Connector: High-performance consumer that ingests from existing Kafka topics into ClickHouse with batch processing, automatic schema inference, and support for multiple concurrent connections.
+  </p>
+  <p>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="none" stroke="#3d50f5" stroke-linejoin="round" stroke-width="1.5" d="M15 19c1.2-3.678 2.526-5.005 6-6c-3.474-.995-4.8-2.322-6-6c-1.2 3.678-2.526 5.005-6 6c3.474.995 4.8 2.322 6 6Zm-8-9c.6-1.84 1.263-2.503 3-3c-1.737-.497-2.4-1.16-3-3c-.6 1.84-1.263 2.503-3 3c1.737.497 2.4 1.16 3 3Zm1.5 10c.3-.92.631-1.251 1.5-1.5c-.869-.249-1.2-.58-1.5-1.5c-.3.92-.631 1.251-1.5 1.5c.869.249 1.2.58 1.5 1.5Z"/></svg>
+    Aurora Natural Language Query Engine: Dual-interface system supporting both direct SQL queries against ClickHouse and natural language queries that leverage OpenAI models with schema-aware context to generate optimized ClickHouse queries.
+  </p>
+  <p>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="none" stroke="#3d50f5" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6.209 12.324H4.401c-.579 0-1.048.47-1.048 1.048v6.83c0 .578.47 1.048 1.048 1.048H6.21c.58 0 1.049-.47 1.049-1.049v-6.829a1.05 1.05 0 0 0-1.049-1.049m6.694-9.573h-1.808c-.58 0-1.049.47-1.049 1.049V20.2c0 .58.47 1.049 1.05 1.049h1.807c.58 0 1.049-.47 1.049-1.049V3.8c0-.58-.47-1.049-1.05-1.049m6.696 5.176H17.79c-.58 0-1.049.47-1.049 1.05V20.2c0 .58.47 1.049 1.049 1.049h1.808a1.05 1.05 0 0 0 1.049-1.049V8.976c0-.58-.47-1.049-1.05-1.049"/></svg>
+    Aurora Visualization Layer: Streamlined Grafana deployment, fully automated and pre-configured with ClickHouse data sources to enable rapid setup and real-time visualization.
+  </p>
+  <p>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="none" stroke="#3d50f5" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 15h-5m-5-5l3 2.5L7 15m-4 .8V8.2c0-1.12 0-1.68.218-2.108c.192-.377.497-.682.874-.874C4.52 5 5.08 5 6.2 5h11.6c1.12 0 1.68 0 2.107.218c.377.192.683.497.875.874c.218.427.218.987.218 2.105v7.606c0 1.118 0 1.677-.218 2.104a2 2 0 0 1-.875.875c-.427.218-.986.218-2.104.218H6.197c-1.118 0-1.678 0-2.105-.218a2 2 0 0 1-.874-.875C3 17.48 3 16.92 3 15.8"/></svg>
+    Aurora CLI: An infrastructure-as-code tool that automatically provisions the full Aurora AWS stack via Terraform, with zero manual steps and seamless environment-specific configuration.
+  </p>
+</div>
 
-**Aurora Kafka-to-ClickHouse Connector**: High-performance consumer that ingests from existing Kafka topics into ClickHouse with batch processing, automatic schema inference, and support for multiple concurrent connections.
-
-**Aurora Natural Language Query Engine**: Dual-interface system supporting both direct SQL queries against ClickHouse and natural language queries that leverage OpenAI models with schema-aware context to generate optimized ClickHouse queries.
-
-**Aurora Visualization Layer**: Streamlined Grafana deployment, fully automated and pre-configured with ClickHouse data sources to enable rapid setup and real-time visualization.
-
-**Aurora Web App**: A mobile-first web application built with TypeScript, Next.js, and Tailwind, featuring a custom three-page layout — Connect, Query, and Visualize — that highlights the platform’s core functionality.
-
-**Aurora CLI**: An infrastructure-as-code tool that automatically provisions the full Aurora AWS stack via Terraform, with zero manual steps and seamless environment-specific configuration.
+<img src="/src/assets/case-study/introduction/aurora-platform-architecture.png" style="width: 100%; height: auto;" class="responsive-image" />
 
 ## What's Next
 

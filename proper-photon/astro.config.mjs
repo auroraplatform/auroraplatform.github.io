@@ -11,6 +11,7 @@ export default defineConfig({
 			title: 'Aurora',
 			description: 'An open-source, real-time query platform for visualizing and analyzing Kafka event streams with ClickHouse, Grafana, and AI',
 
+			customCss: ['./src/styles/case-study.css'],
 			logo: {
 				light: './src/assets/aurora_logo.png',
 				dark: './src/assets/aurora_logo_dark.png',
