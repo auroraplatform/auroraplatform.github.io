@@ -24,6 +24,7 @@ export default defineConfig({
 					items: [
 						// Each item here is one entry in the navigation menu.
 						{ label: 'Introduction', slug: 'case_study/introduction' },
+						{ label: 'Background', slug: 'case_study/background' },
 					],
 				},
 				{
