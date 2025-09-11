@@ -33,7 +33,7 @@ This creates a fundamental disconnect. Data teams need to ask questions like:
 
 With traditional Kafka tooling, even simple questions require building custom consumers and complex streaming logic. And business users who want to ask questions in natural language (e.g., "How many orders did we get from California this week?") are completely blocked without technical intervention.
 
-<img src="/src/assets/case-study/introduction/event-streams-as-data-silos.png" style="width: 100%; height: auto;" class="responsive-image" />
+![Event Streams as Data Silos](../../../assets/case-study/introduction/event-streams-as-data-silos.png)
 
 ## Market Context and Positioning
 
@@ -54,7 +54,7 @@ Companies facing these demands often encounter a tough choice between managed se
 - **Cost efficiency**: Expenses limited to AWS hosting and OpenAI tokens
 - **Open source**: Full transparency and customization capability
 
-<img src="/src/assets/case-study/introduction/comparison-chart.png" style="width: 100%; height: auto;" class="responsive-image" />
+![Comparison Chart](../../../assets/case-study/introduction/comparison-chart.png)
 
 ## Technical Challenges
 
@@ -62,7 +62,7 @@ Building Aurora required solving several core engineering problems. The first ma
 
 Then we needed to bring everything together in an **intuitive web app** that allowed users to manage connections, run queries, and access visualizations seamlessly. Finally, **infrastructure automation** played a crucial role, enabling the deployment and configuration of a distributed system stack without any manual intervention.
 
-<img src="/src/assets/case-study/introduction/event-streams-as-data-silos-aurora.png" style="width: 100%; height: auto;" class="responsive-image" />
+![Event Streams as Data Silos - Aurora](../../../assets/case-study/introduction/event-streams-as-data-silos-aurora.png)
 
 ## Aurora Architecture Overview
 
@@ -90,7 +90,7 @@ Our answer to these challenges consists of five core components we engineered:
   </p>
 </div>
 
-<img src="/src/assets/case-study/introduction/aurora-platform-architecture.png" style="width: 100%; height: auto;" class="responsive-image" />
+![Aurora Platform Architecture](../../../assets/case-study/introduction/aurora-platform-architecture.png)
 
 ## What's Next
 
