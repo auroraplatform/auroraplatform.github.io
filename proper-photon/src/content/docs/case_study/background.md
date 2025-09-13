@@ -11,6 +11,8 @@ This demand represents a major departure from the batch-oriented paradigms that 
 
 Modern applications require immediate insights to optimize experiences and understand user behavior as it happens, operational intelligence to monitor system performance and business metrics in real time (Kreps, 2014, p. 12), and interactive analytics that allow users to dynamically explore data rather than relying solely on pre-built reports.
 
+![Real-time analytics](../../../assets/case-study/background/real-time-analytics-growth.png)
+
 ## The Real-Time Data Stack Complexity
 
 Building a real-time data platform involves several complex components that must work together seamlessly.
@@ -23,6 +25,8 @@ Building a real-time data platform involves several complex components that must
 
 **Data access** involves multiple considerations: query interfaces such as SQL and programmatic access for retrieving and manipulating data, security through role-based access control and data protection measures, performance optimization for fast query execution, and integration via APIs and connectors for seamless interaction with various tools and platforms.
 
+![Real-Time Data Stack](../../../assets/case-study/background/real-time-data-stack.png)
+
 ## Current Solutions and Their Trade-offs
 
 ### Managed Services
@@ -33,11 +37,15 @@ Notable solutions include AWS Kinesis combined with Redshift Streaming Ingestion
 
 These services allow businesses to ingest, process, and analyze data continuously, supporting use cases ranging from operational monitoring to real-time business intelligence. However, they come with significant costs, vendor lock-in risks, and limited customization options, making them often overkill for smaller teams or simpler projects.
 
+![Managed Services](../../../assets/case-study/background/managed-services.png)
+
 ### Open-Source Solutions
 
 The open-source ecosystem offers powerful tools for building custom real-time data platforms. Apache Kafka remains the de facto standard for distributed data streaming and ingestion (Saravanan et al., 2023, p. 89457), while Apache Flink provides a robust framework for complex stream processing and real-time analytics. For analytics-focused storage, ClickHouse offers high-performance, column-oriented database optimization for analytical queries. Apache Druid delivers sub-second query performance for real-time dashboards, and Apache Pinot excels at low-latency analytics on high-throughput event streams.
 
 However, these tools require significant expertise to deploy and operate effectively (Bellemare, 2020, p. 34). Teams need deep understanding of distributed system architecture, performance tuning, monitoring and observability, security and access control, and infrastructure management to ensure reliable operation at scale.
+
+![Open Source Solutions](../../../assets/case-study/background/open-source-solutions.png)
 
 ### The Integration Challenge
 
@@ -47,11 +55,15 @@ When failures occur (and they inevitably do in distributed systems) the complexi
 
 Security adds another layer of complexity, as teams must implement authentication and authorization consistently across Kafka brokers, database connections, and API endpoints, often with different security models and configuration approaches for each component.
 
+![Integration Challenge](../../../assets/case-study/background/integration-challenge-1.png)
+
 ## The Skills Gap
 
 The complexity of real-time data platforms has created a significant skills gap in the industry (Kleppmann, 2017, p. 15). Many organizations have data scientists who understand analytics but lack infrastructure expertise, software engineers who can build applications but aren't familiar with data engineering, DevOps engineers who manage infrastructure but don't specialize in data systems, and business analysts who need data insights but can't write complex queries.
 
 This skills gap means that valuable data often remains inaccessible or underutilized, limiting the organization's ability to make data-driven decisions.
+
+![Skills Gap](../../../assets/case-study/background/skills-gap.png)
 
 ## The Cost of Complexity
 
