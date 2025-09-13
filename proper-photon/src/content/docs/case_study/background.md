@@ -71,6 +71,8 @@ The complexity of real-time data platforms often results in significant business
 
 Data latency compounds the issue, as delays in data availability diminish the usefulness of insights for decision-making. Complex interfaces can hinder user adoption, preventing business users from accessing data independently and efficiently. These factors contribute to a high total cost of ownership, driven by both infrastructure expenses and the personnel required to sustain such intricate systems.
 
+![Cost of Complexity](../../../assets/case-study/background/cost-complexity.png)
+
 ## The Opportunity
 
 This challenging landscape presents a significant opportunity: building an open-source platform that makes real-time data accessible without requiring deep expertise in distributed systems, stream processing, or database optimization.
