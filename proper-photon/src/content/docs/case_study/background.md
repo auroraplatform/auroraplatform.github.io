@@ -1,6 +1,6 @@
 ---
 title: "Background: The Real-Time Data Challenge"
-description: "Building an open-source platform that makes real-time data accessible without requiring deep expertise in distributed systems, stream processing, or database optimization.."
+description: "Building an open-source platform that makes real-time data accessible without requiring deep expertise in distributed systems, stream processing, or database optimization."
 ---
 
 ## The Growing Need for Real-Time Analytics
