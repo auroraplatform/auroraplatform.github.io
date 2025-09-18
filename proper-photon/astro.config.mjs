@@ -29,8 +29,15 @@ export default defineConfig({
 					],
 				},
 				{
-					label: 'References',
-					autogenerate: { directory: 'reference' },
+					label: 'Docs',
+					items: [
+						// Each item here is one entry in the navigation menu.
+						{ label: 'Install & Deploy', slug: 'docs/install' },
+						{ label: 'Connect to Kafka', slug: 'docs/connect' },
+						{ label: 'Query with AI', slug: 'docs/query' },
+						{ label: 'Visualize with Grafana', slug: 'docs/visualize' },
+						{ label: 'Destroy & Uninstall', slug: 'docs/uninstall' },
+					],
 				},
 			],
 		}),
