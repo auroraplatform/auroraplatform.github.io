@@ -25,7 +25,11 @@ export default defineConfig({
 						// Each item here is one entry in the navigation menu.
 						{ label: 'Introduction', slug: 'case_study/introduction' },
 						{ label: 'Background', slug: 'case_study/background' },
-						{ label: 'Architecture', slug: 'case_study/architecture' },
+						{ label: 'Aurora Architecture', slug: 'case_study/architecture' },
+						{ label: 'Design Decisions', slug: 'case_study/design_decisions' },
+						{ label: 'Load Testing', slug: 'case_study/load_testing' },
+						{ label: 'Future Work', slug: 'case_study/future_work' },
+						{ label: 'References', slug: 'case_study/references' },
 					],
 				},
 				{

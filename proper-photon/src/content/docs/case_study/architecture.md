@@ -153,22 +153,3 @@ Aurora is designed with scalability in mind through **modular architecture**. Th
 ### 3. Reliability
 
 Reliability in Aurora is maintained through **data backup strategies** and **comprehensive logging**. The platform includes **automated daily backups to S3**, safeguarding against data loss and ensuring long-term persistence. **Operational visibility** is provided through detailed logging of key system activities, enabling troubleshooting and maintenance. The system is designed for predictable performance with manual recovery procedures for maintenance and updates.
-
-
-## References
-
-Abadi, D., Boncz, P., Harizopoulos, S., Idreos, S., & Madden, S. (2013). The design and implementation of modern column-oriented database systems. *Foundations and Trends in Databases, 5*(3), 197–280.
-
-Anderson, R. (2020). *Security engineering: A guide to building dependable distributed systems* (3rd ed.). Wiley.
-
-Carbone, P., Katsifodimos, A., Ewen, S., Markl, V., Haridi, S., & Tzoumas, K. (2015). Apache Flink: Stream and batch processing in a single engine. *Bulletin of the IEEE Computer Society Technical Committee on Data Engineering, 38*(4), 28–38.
-
-Dar, S., Franklin, M. J., Jónsson, B. T., Srivastava, D., & Tan, M. (1996). Semantic data caching and replacement. In *Proceedings of the 22nd International Conference on Very Large Data Bases* (pp. 330-341). Morgan Kaufmann.
-
-Karimov, J., Rabl, T., Katsifodimos, A., Samarev, R., Heiskanen, H., & Markl, V. (2018). Benchmarking distributed stream data processing systems. In *Proceedings of the 34th IEEE International Conference on Data Engineering* (pp. 1507–1518). IEEE.
-
-Kleppmann, M. (2017). *Designing data-intensive applications: The big ideas behind reliable, scalable, and maintainable systems*. O'Reilly Media.
-
-Morris, K. (2016). *Infrastructure as code: Managing servers in the cloud*. O'Reilly Media.
-
-Newman, S. (2021). *Building microservices: Designing fine-grained systems* (2nd ed.). O'Reilly Media.
