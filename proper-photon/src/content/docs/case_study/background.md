@@ -80,21 +80,3 @@ This challenging landscape presents a significant opportunity: building an open-
 Such a platform would simplify and broaden data access, enabling business users to explore data independently. It would reduce time to value by allowing teams to gain insights from data in minutes rather than months, while lowering total cost through reduced infrastructure and personnel requirements (Kreps, 2014, p. 78). Additionally, it would increase organizational agility, allowing teams to respond quickly to changing business needs, and improve data quality through centralized management with built-in quality controls.
 
 Aurora was built to address this opportunity by providing a unified platform that abstracts away the complexity of real-time data infrastructure while maintaining the performance and reliability required for production use.
-
----
-
-## References
-
-Akidau, T., Bradshaw, R., Chambers, C., Chernyak, S., Fernández-Moctezuma, R. J., Lax, R., McVeety, S., Mills, D., Perry, F., & Whittle, S. (2015). The dataflow model: A practical approach to balancing correctness, latency, and cost in massive-scale, unbounded, out-of-order data processing. *Proceedings of the VLDB Endowment, 8*(12), 1792–1803. https://doi.org/10.14778/2824032.2824076  
-
-Akidau, T., Chernyak, S., & Lax, R. (2018). *Streaming systems: The what, where, when, and how of large-scale data processing*. O’Reilly Media.  
-
-Bellemare, A. (2020). *Building event-driven microservices: Leveraging organizational data at scale*. O’Reilly Media.  
-
-Kleppmann, M. (2017). *Designing data-intensive applications: The big ideas behind reliable, scalable, and maintainable systems*. O’Reilly Media.  
-
-Kreps, J. (2014). *I heart logs: Event data, stream processing, and data integration*. O’Reilly Media.  
-
-Kreps, J., Narkhede, N., Rao, J., Auradkar, S., Chen, D., Jain, A., & Wang, J. (2011). Kafka: A distributed messaging system for log processing. In *Proceedings of the NetDB Workshop at SIGMOD* (pp. 1–7). ACM.
-
-Saravanan, S., Kumar, R., & Chen, L. (2023). A survey on networked data streaming with Apache Kafka. *IEEE Access, 11*, 89456–89473. https://doi.org/10.1109/ACCESS.2023.3303810

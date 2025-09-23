@@ -50,7 +50,7 @@ Companies facing these demands often encounter a tough choice between managed se
 ### Key Differentiators
 - **Zero vendor lock-in**: All infrastructure runs in your AWS account
 - **Multi-interface access**: Natural language queries, SQL queries, and Grafana dashboards
-- **ClickHouse performance**: Columnar storage optimized for "high-performance analytics [...] with high ingestion rates" (Schulze et al., 2024, p. 3731)
+- **ClickHouse performance**: Columnar storage optimized for high-performance analytics with high ingestion rates (Schulze et al., 2024, p. 3731)
 - **Grafana Integration**: Built-in Grafana instance, configured and connected
 - **Automated deployment**: Single command deploys the entire stack
 - **Cost efficiency**: Expenses limited to AWS hosting and OpenAI tokens
@@ -97,13 +97,3 @@ Our answer to these challenges consists of five core components we engineered:
 ## What's Next
 
 The following sections of our case study detail Aurora's internal components, the specific engineering challenges we encountered, performance optimizations we implemented, and lessons learned during development.
-
----
-
-**Introduction References**
-
-Akidau, T., Chernyak, S., & Lax, R. (2019). Streaming Systems: The What, Where, When, and How of Large-Scale Data Processing. O'Reilly Media.
-
-Kleppmann, M. (2017). Designing Data-Intensive Applications: The Big Ideas Behind Reliable, Scalable, and Maintainable Systems. O'Reilly Media.
-
-Schulze, R., Schreiber, T., Yatsishin, I., Dahimene, R., & Milovidov, A. (2024). ClickHouse – Lightning Fast Analytics for Everyone. Proceedings of the VLDB Endowment, 17(12), 3731–3744.
