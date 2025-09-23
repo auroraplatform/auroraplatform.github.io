@@ -3,9 +3,9 @@ title: "Aurora Architecture: Building a Real-Time Analytics Platform"
 description: "Aurora is designed as a modular, cloud-deployed platform that integrates its core components into a cohesive data analytics ecosystem."
 ---
 
-
-
 ## System Overview
+
+![Aurora Platform Architecture](../../../assets/case-study/architecture/aurora-platform-architecture.png)
 
 Aurora is designed as a modular, cloud-deployed platform that integrates its core components into a cohesive data analytics ecosystem. The architecture follows a layered approach that separates concerns, incorporating standard microservices decomposition strategies (Newman, 2021, pp. 45-67), while maintaining tight integration between components.
 
@@ -37,11 +37,12 @@ Aurora is designed as a modular, cloud-deployed platform that integrates its cor
 		- Containerized Web App
 		- S3 Backup
 		- Security & Monitoring
-       
 
 ## Core Components
 
 ### 1. Data Pipeline (Kafka → ClickHouse)
+
+![Data Pipeline](../../../assets/case-study/architecture/data-pipeline.png)
 
 The data pipeline forms the foundation of Aurora's real-time capabilities, following established patterns for unified stream and batch processing architectures (Carbone et al., 2015, p. 30). It is designed with a modular architecture, which allows teams to connect and disconnect data sources independently without disrupting the broader system. This flexibility makes it easier to manage diverse data flows while maintaining resilience and scalability.
 
@@ -52,6 +53,8 @@ For storage and analytical processing, Aurora leverages **ClickHouse**, a high-p
 To simplify management, Aurora provides **automated pipeline lifecycle tools**. Connect scripts streamline the process of setting up new data pipelines, while disconnect scripts ensure clean removal without risking data loss. Complementing these tools is a monitoring layer that gives teams real-time visibility into pipeline health and performance, ensuring that issues can be quickly identified and resolved.
 
 ### 2. Natural Language Query Engine
+
+![Natural Language Query Engine](../../../assets/case-study/architecture/nl-query-engine.png)
 
 The query engine transforms natural language into executable SQL, making data accessible to non-technical users.
 
@@ -67,6 +70,8 @@ Natural Language Query → Schema Context Retrieval → SQL Generation → Param
 
 ### 3. Web Application Interface
 
+![Web Application Interface](../../../assets/case-study/architecture/web-app-interface.png)
+
 The web interface provides a unified experience for managing data pipelines, executing queries, and visualizing results.
 
 The **frontend architecture** is built with Next.js, React, and TypeScript, leveraging Tailwind CSS with a custom design system for styling. State is managed using React hooks, ensuring simplicity and performance in handling local interactions. The design follows a mobile-first approach with progressive enhancement, ensuring accessibility and responsiveness across devices.
@@ -74,12 +79,13 @@ The **frontend architecture** is built with Next.js, React, and TypeScript, leve
 The application includes three **key pages**. 
 
 The **Connect** page provides tools for pipeline management and configuration, allowing users to establish and control data workflows. 
+![Connect Page](../../../assets/case-study/architecture/connect.png)
 
-The **Query** page enables natural language interactions, simplifying the process of writing and executing queries. 
+The **Query** page enables natural language interactions, simplifying the process of writing and executing queries.
+![Query Page](../../../assets/case-study/architecture/query.png)
 
 The **Visualize** page integrates Aurora with Grafana, offering powerful visualization capabilities for exploring data.
-
-((we could have screenshots of these pages here))
+![Visualize Page](../../../assets/case-study/architecture/visualize.png)
 
 Aurora's **component design** emphasizes consistency and reusability. A structured layout system ensures coherent navigation throughout the interface. Form components use consistent styling and basic validation, streamlining user input while maintaining reliability. Status indicators provide visibility into pipeline and connection health, while robust error handling ensures that users receive clear, actionable feedback and recovery options when issues arise.
 
@@ -119,19 +125,20 @@ The platform is built for cloud deployment with modern DevOps practices. It uses
 
 Data flows through the system in a carefully orchestrated manner:
 
-((these could be diagrams))
-
 **a. Ingestion Flow**:
+![Ingestion flow](../../../assets/case-study/architecture/ingestion-flow.png)
 ```
 Kafka Topic → Consumer Service → ClickHouse → Real-time Availability
 ```
 
 **b. Query Flow**:
+![Query flow](../../../assets/case-study/architecture/query-flow.png)
 ```
 Natural Language → LLM Processing → SQL Generation → ClickHouse Execution → Results
 ```
 
 **c. Visualization Flow**:
+![Visualization flow](../../../assets/case-study/architecture/visualization-flow.png)
 ```
 ClickHouse Data → Grafana Integration → Interactive Dashboards → User Insights
 ```
@@ -154,6 +161,7 @@ Aurora is designed with scalability in mind through **modular architecture**. Th
 
 Reliability in Aurora is maintained through **data backup strategies** and **comprehensive logging**. The platform includes **automated daily backups to S3**, safeguarding against data loss and ensuring long-term persistence. **Operational visibility** is provided through detailed logging of key system activities, enabling troubleshooting and maintenance. The system is designed for predictable performance with manual recovery procedures for maintenance and updates.
 
+![Reliability](../../../assets/case-study/architecture/s3-backup.png)
 
 ## References
 
