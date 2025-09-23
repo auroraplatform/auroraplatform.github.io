@@ -92,7 +92,7 @@ Our answer to these challenges consists of five core components we engineered:
   </p>
 </div>
 
-![Aurora Platform Architecture](../../../assets/case-study/introduction/aurora-platform-architecture.png)
+![Aurora Platform Architecture](../../../assets/case-study/architecture/aurora-platform-architecture.png)
 
 ## What's Next
 
