@@ -12,11 +12,11 @@ Aurora is an open-source, integrated data platform that bridges the gap between 
 By provisioning these components directly into the cloud, Aurora enables real-time exploration, analysis, and visualization of event data without the complexity of custom tooling or the cost overhead of managed services. This integrated approach mitigates the conventional challenges associated with data ingestion, processing, and analysis, enabling teams to derive insights from raw data within seconds of installation.
 
 **Key Technical Achievements:**
-- **Sub-5 second end-to-end latency** from Kafka consumption to queryable data in ClickHouse
-- **Horizontally scalable architecture** handling 10,000+ events/second per stream
-- **Natural language query interface** powered by OpenAI with schema-aware context
+- **Sub-5 second end-to-end latency** from Kafka consumption to queryable data
+- **Scalable modular architecture**, load-tested for **1,000+ events/second burst capacity** with **200 events/second sustained load** and **99.7% delivery reliability**
+- **Natural language query interface** powered by OpenAI with custom schema-aware context implementation, achieving **87.5% accuracy** in load testing
 - **Integrated visualization layer** with automated Grafana connection and configuration
-- **One-command AWS deployment** with automated infrastructure provisioning
+- **One-command AWS deployment** with automated Terraform provisioning of **17+ infrastructure components**, reducing deployment time from 4-8 hours to 5-10 minutes (**95%+ time reduction**)
 
 ![Aurora Platform Features](../../../assets/case-study/introduction/features-1.png)
 
