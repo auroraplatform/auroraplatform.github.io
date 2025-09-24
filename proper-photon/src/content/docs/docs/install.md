@@ -19,6 +19,9 @@ npm install -g aurora-platform-cli
    aws configure
    ```
 2. At the start of deployment, you’ll be prompted to enter your OpenAI API key. If you don’t have one yet, [create a key](https://platform.openai.com/api-keys) following the [official instructions](https://platform.openai.com/docs/libraries#create-and-export-an-api-key).
+
+   ![OpenAI API Key Config](../../../assets/docs/openapi-key.png)
+
 3. Deploy Aurora:
 
    ```bash
@@ -28,6 +31,8 @@ npm install -g aurora-platform-cli
 ### 3. Access Aurora
 
 * After deployment, you’ll receive a link to your Aurora web app.
+![Deploy Message](../../../assets/docs/deploy-success-message.png)
+
 * From there, you can:
   * [Connect](https://auroraplatform.github.io/docs/connect/) to your Kafka topics
   * [Query](https://auroraplatform.github.io/docs/query/) data using natural language

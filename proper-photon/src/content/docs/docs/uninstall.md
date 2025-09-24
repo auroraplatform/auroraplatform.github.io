@@ -10,6 +10,7 @@ Run the following command to remove Aurora from your AWS account:
 ```bash
 aurora destroy
 ```
+![Destroy Message](../../../assets/docs/destroy-success-message.png)
 
 ### 2. Uninstall the Aurora CLI
 

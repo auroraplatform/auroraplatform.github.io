@@ -5,6 +5,8 @@ description: "How to access and use Grafana in Aurora."
 
 The **Visualize** page provides access to Grafana dashboards for advanced monitoring and analysis of your Kafka data streams. Aurora comes with a preconfigured Grafana instance, so you can start exploring your data with professional-grade visualizations immediately.
 
+![Grafana Connect Example](../../../assets/docs/grafana-example.png)
+
 ### Steps
 
 1. **Access the Visualize Page**

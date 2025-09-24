@@ -5,6 +5,8 @@ description: "How to query in Aurora."
 
 The **Query** page lets you explore data from your Aurora-connected Kafka streams using natural language. You don’t need SQL or knowledge of the database schema — just ask a question, and Aurora instantly generates the query and displays the results.
 
+![Query Example](../../../assets/docs/query-example.png)
+
 ### Steps
 
 1. **Access the Query Page**

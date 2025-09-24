@@ -5,6 +5,8 @@ description: "How to connect Aurora to Kafka."
 
 The **Connect** page lets you establish connections between Aurora and your Kafka streams. It provides a simple interface for setting up your data pipeline. Once connected, streaming data is saved to ClickHouse in real time, and you can query and visualize it directly through the Aurora web app.
 
+![OpenAI API Key Config](../../../assets/docs/kafka-connections.png)
+
 ### Steps
 
 1. **Access the Connect Page**

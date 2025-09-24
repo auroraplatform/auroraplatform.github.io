@@ -9,34 +9,7 @@ description: "Aurora is designed as a modular, cloud-deployed platform that inte
 
 Aurora is designed as a modular, cloud-deployed platform that integrates its core components into a cohesive data analytics ecosystem. The architecture follows a layered approach that separates concerns, incorporating standard microservices decomposition strategies (Newman, 2021, pp. 45-67), while maintaining tight integration between components.
 
-- **Aurora Platform**
-
-	- **Frontend Layer (Next.js + React + TypeScript)**
-		- Connection Management
-		- Natural Language Query Interface
-		- Data Visualization 
-		- Grafana Integration
-
-	- **Backend Layer (FastAPI + Python)**
-		- Query Processing Engine
-		- AI-Powered SQL Generation
-		- Schema Management
-		- Security & Validation
-		- RESTful API	   
-
-	- **Data Layer (ClickHouse + Kafka)**
-		- Real-time Data Storage
-		- Stream Processing
-		- Analytics Engine
-		- Schema Inference
-		- Auto-Table Creation 
-
-	- **Infrastructure Layer (AWS + Terraform + Docker)**
-		- Infrastructure as Code
-		- Independent EC2 Services
-		- Containerized Web App
-		- S3 Backup
-		- Security & Monitoring
+![Layers Diagram](../../../assets/case-study/architecture/layers-diagram.png)
 
 ## Core Components
 
@@ -60,11 +33,17 @@ The query engine transforms natural language into executable SQL, making data ac
 
 **LLM Integration** relies on GPT-3.5-turbo for SQL generation. It uses schema-aware prompting with table and column information to guide the model, producing a structured JSON output that includes both SQL and parameter extraction. To ensure security, queries are parameterized to prevent SQL injection.
 
+![LLM Integration Diagram](../../../assets/case-study/architecture/llm-integration.png)
+
 **Schema Embedding System** is designed to enable semantic search through table and column descriptions. It works by creating vector embeddings of table and column descriptions, which makes intelligent context retrieval possible during query generation. This approach improves accuracy while also supporting fast similarity search, ensuring that only the most relevant schema elements are considered.
+
+![Schema Embedding System Diagram](../../../assets/case-study/architecture/schema-embedding-system.png)
 
 Finally, the **Context Builder** enhances the process by formatting the most relevant tables and columns identified by the schema embedding system. It ensures that only the necessary schema information is included, keeping the context focused and optimized. This not only improves accuracy but also limits the size of the context for faster LLM processing.
 
-**The Query Processing Pipeline** thus follows a clear flow: 
+![Context Builder Diagram](../../../assets/case-study/architecture/context-builder.png)
+
+**The Query Processing Pipeline** thus follows a clear flow:
 
 Natural Language Query → Schema Context Retrieval → SQL Generation → Parameterized Query Validation → Execution → Results.
 
@@ -97,6 +76,8 @@ For deployment strategy, Aurora adopts **Infrastructure as Code** principles usi
 
 This architecture gives Aurora the ability to support real-time data streaming use cases with predictable performance, aligning with the benchmarks established for distributed stream processing systems (Karimov et al., 2018, pp. 1510-1515). Its modular design separates concerns across different components, while the cloud-native foundation ensures efficient resource utilization and operational visibility in production environments. The platform's open-source compatibility allows for easy integration with existing Kafka-based data pipelines and analytical workflows.
 
+![Deployment Architecture](../../../assets/case-study/architecture/deployed-infra.png)
+
 ## Security Architecture
 
 ### 1. Network Security
@@ -127,19 +108,19 @@ Data flows through the system in a carefully orchestrated manner:
 
 **a. Ingestion Flow**:
 ![Ingestion flow](../../../assets/case-study/architecture/ingestion-flow.png)
-```
+```txt wrap
 Kafka Topic → Consumer Service → ClickHouse → Real-time Availability
 ```
 
 **b. Query Flow**:
 ![Query flow](../../../assets/case-study/architecture/query-flow.png)
-```
+```txt wrap
 Natural Language → LLM Processing → SQL Generation → ClickHouse Execution → Results
 ```
 
 **c. Visualization Flow**:
 ![Visualization flow](../../../assets/case-study/architecture/visualization-flow.png)
-```
+```txt wrap
 ClickHouse Data → Grafana Integration → Interactive Dashboards → User Insights
 ```
 
