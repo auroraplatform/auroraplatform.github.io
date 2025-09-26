@@ -18,7 +18,7 @@ By provisioning these components directly into the cloud, Aurora enables real-ti
 - **Integrated visualization layer** with automated Grafana connection and configuration
 - **One-command AWS deployment** with automated Terraform provisioning of **17+ infrastructure components**, reducing deployment time from 4-8 hours to 5-10 minutes (**95%+ time reduction**)
 
-![Aurora Platform Features](../../../assets/case-study/introduction/features-1.png)
+![Aurora Platform Features](../../../assets/case-study/introduction/features.png)
 
 This case study examines the real-world engineering challenges we solved, architectural decisions we made, and performance optimizations we implemented while building Aurora. It investigates how Aurora addresses these challenges through its modular architecture and the technical trade-offs involved in creating a system that balances ease of use with production-grade reliability and performance.
 
