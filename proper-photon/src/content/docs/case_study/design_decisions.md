@@ -13,6 +13,8 @@ Aurora was built around a fundamental principle: **make complex data infrastruct
 
 **Decision**: Use ClickHouse instead of traditional databases like PostgreSQL or other columnar alternatives like Apache Druid or Amazon Redshift.
 
+![Primary Database](../../../assets/case-study/design-decisions/primary-database.png)
+
 **Rationale**: ClickHouse delivers query performance that is 10-100x faster than traditional OLTP databases for analytical workloads. Its native support for real-time data insertion with sub-second latency makes it ideal for Aurora's streaming analytics use case. Built-in compression reduces storage costs by 5-10x, while its column-oriented storage is optimized for the aggregate queries typical in analytics (Abadi et al., 2013, p. 202; Stonebraker et al., 2005, p. 556). Compared to other columnar databases, ClickHouse offers superior performance for time-series data, simpler operational requirements than distributed systems like Druid, and significantly lower costs than managed solutions like Redshift.
 
 **Trade-offs**: ClickHouse's SQL dialect differs from PostgreSQL, creating a learning curve for teams familiar with traditional databases. It requires specialized knowledge for performance tuning and lacks the mature ecosystem of tools available for established databases. The system is optimized for append-heavy workloads rather than frequent updates or deletes.
@@ -22,6 +24,8 @@ Aurora was built around a fundamental principle: **make complex data infrastruct
 ### 2. Kafka as the Only Streaming Connection
 
 **Decision**: Support only Kafka for data ingestion, rather than multiple streaming platforms like Pulsar, Kinesis, or direct database connections.
+
+![Streaming Connection](../../../assets/case-study/design-decisions/streaming-connection.png)
 
 **Rationale**: Kafka is the de facto standard for enterprise event streaming, with widespread adoption ensuring compatibility with existing data infrastructure. Focusing on a single streaming platform allows Aurora to optimize deeply for Kafka's specific characteristics, including partition management, offset tracking, and SASL/SSL authentication. This focus enables better error handling, monitoring, and performance tuning compared to supporting multiple platforms.
 
@@ -33,6 +37,8 @@ Aurora was built around a fundamental principle: **make complex data infrastruct
 
 **Decision**: Use Python for all backend services instead of Go, Java, or Node.js.
 
+![Backend Services](../../../assets/case-study/design-decisions/backend-services.png)
+
 **Rationale**: Python's rich ecosystem provides extensive libraries for data processing, machine learning, and LLM integration essential for Aurora's natural language features. The team's existing Python expertise reduces development time and maintenance complexity. Python's rapid prototyping capabilities enable faster iteration on AI-powered features, while libraries like FastAPI provide production-grade API performance.
 
 **Trade-offs**: Python's interpreted nature results in slower execution compared to compiled languages and higher memory usage. Cold start times are longer, and deployment requires larger container images with complex dependency management.
@@ -42,6 +48,8 @@ Aurora was built around a fundamental principle: **make complex data infrastruct
 ### 4. Next.js for Frontend
 
 **Decision**: Use Next.js with TypeScript instead of vanilla React or alternative frameworks like Vue.js or Svelte.
+
+![Frontend Frameworks](../../../assets/case-study/design-decisions/frontend-frameworks.png)
 
 **Rationale**: Next.js provides excellent developer experience with hot reloading, automatic code splitting, and built-in optimizations that accelerate development. TypeScript integration ensures code quality and maintainability for Aurora's complex data visualization interfaces. The framework's server-side rendering capabilities improve initial load performance, crucial for data-heavy applications.
 
@@ -55,6 +63,8 @@ Aurora was built around a fundamental principle: **make complex data infrastruct
 
 **Decision**: Implement a hybrid modular monolith architecture with clear service boundaries.
 
+![Monolith vs Microservices](../../../assets/case-study/design-decisions/monolith-microservices.png)
+
 **Rationale**: A modular monolith provides operational simplicity essential for teams with limited DevOps expertise--Aurora's target audience. Single deployments simplify testing, monitoring, and debugging compared to distributed systems. The approach is more resource-efficient, avoiding the overhead of service discovery, network communication, and distributed system complexity that can overwhelm smaller teams (Tanenbaum & van Steen, 2016, p. 78).
 
 **Trade-offs**: All modules share the same deployment lifecycle, meaning updates to one component require redeploying the entire application. Technology choices are coupled across modules, and true independent scaling is limited since components cannot be scaled separately. The architecture requires careful internal API design to maintain modularity.
@@ -65,6 +75,8 @@ Aurora was built around a fundamental principle: **make complex data infrastruct
 
 **Decision**: Support real-time data ingestion while optimizing for ClickHouse's batch-oriented columnar architecture.
 
+![ClickHouse Optimization](../../../assets/case-study/design-decisions/ch-optimization.png)
+
 **Rationale**: ClickHouse achieves optimal performance through batch operations due to its columnar storage format. This is a well-documented characteristic of columnar databases, where batch operations minimize the I/O overhead of writing to multiple columns (Ramakrishnan & Gehrke, 2003, p. 743). However, many use cases require low-latency data availability for operational dashboards and alerting. Aurora balances these needs by implementing configurable batch processing that groups real-time Kafka messages into ClickHouse's preferred insertion patterns while maintaining data freshness through adjustable batch sizes and time windows.
 
 **Trade-offs**: Real-time ingestion requires careful buffer management and increases system complexity. ClickHouse's write performance is optimized for bulk operations, so individual record insertions are inefficient. Memory usage increases due to buffering requirements.
@@ -74,6 +86,8 @@ Aurora was built around a fundamental principle: **make complex data infrastruct
 ### 3. Schema Evolution Strategy
 
 **Decision**: Prioritize performance through structured schemas while supporting controlled schema evolution.
+
+![Schema Strategy](../../../assets/case-study/design-decisions/schema-strategy.png)
 
 **Rationale**: Structured schemas are a cornerstone of performant database systems, enabling effective query optimization and indexing (Silberschatz, Galvin, & Gagne, 2018, p. 571; Connolly & Begg, 2014, p. 422). Fast query response times are essential for Aurora's interactive natural language interface. Structured schemas also improve data quality and enable better AI-powered query generation through clear column types and descriptions.
 
@@ -87,6 +101,8 @@ Aurora was built around a fundamental principle: **make complex data infrastruct
 
 **Decision**: Present a simple interface by default with advanced capabilities accessible through progressive disclosure.
 
+![Interface](../../../assets/case-study/design-decisions/interface.png)
+
 **Rationale**: Most users benefit from simple interfaces that reduce cognitive load and training requirements. Business users can start deriving insights immediately without learning complex SQL syntax. However, power users still need access to advanced features for sophisticated analysis and optimization.
 
 **Trade-offs**: Some advanced features may be harder to discover, potentially frustrating experienced users. The natural language interface might not expose all ClickHouse capabilities immediately. Balancing simplicity with completeness requires careful UX design decisions.
@@ -97,6 +113,8 @@ Aurora was built around a fundamental principle: **make complex data infrastruct
 
 **Decision**: Emphasize natural language queries while maintaining full SQL access and always showing generated queries.
 
+![Natural Language vs SQL Interface](../../../assets/case-study/design-decisions/nl-sql.png)
+
 **Rationale**: Natural language dramatically lowers the barrier to data access for business users who lack SQL expertise. Showing generated SQL serves dual purposes: building user confidence in query accuracy and providing learning opportunities. This approach democratizes data access while maintaining transparency and educational value.
 
 **Trade-offs**: Natural language processing introduces latency and potential inaccuracies compared to direct SQL. LLM costs increase with usage, and complex analytical queries may be difficult to express in natural language. Users might become overly dependent on the AI interface.
@@ -106,6 +124,8 @@ Aurora was built around a fundamental principle: **make complex data infrastruct
 ### 3. Integrated Visualization vs. External Tools
 
 **Decision**: Integrate with Grafana rather than building custom visualization components.
+
+![Integrated Visualization](../../../assets/case-study/design-decisions/integrated-visualization.png)
 
 **Rationale**: Grafana is the industry standard for operational dashboards and data visualization, providing mature features that would take years to replicate. Integration leverages existing user expertise and enables sophisticated visualization capabilities immediately. This approach allows Aurora to focus on its core strengths--data ingestion and natural language querying--rather than rebuilding visualization tools.
 
@@ -119,6 +139,8 @@ Aurora was built around a fundamental principle: **make complex data infrastruct
 
 **Decision**: Use Terraform for all infrastructure provisioning rather than manual setup or other IaC tools.
 
+![Infrastructure as Code Tools](../../../assets/case-study/design-decisions/iac-tools.png)
+
 **Rationale**: Terraform provides cloud-agnostic infrastructure management with strong AWS provider support. Its declarative approach ensures reproducible deployments across environments, essential for Aurora's target users who may lack extensive DevOps experience. State management and plan previews reduce deployment risks compared to imperative scripts.
 
 **Trade-offs**: Terraform requires additional learning for teams unfamiliar with infrastructure as code. State file management introduces complexity, and some AWS features may lag behind native CloudFormation support. Initial setup is more complex than manual provisioning.
@@ -129,6 +151,8 @@ Aurora was built around a fundamental principle: **make complex data infrastruct
 
 **Decision**: Implement comprehensive security measures from the foundation rather than adding them later.
 
+![Security-First Architecture](../../../assets/case-study/design-decisions/security.png)
+
 **Rationale**: This 'security by design' approach is considered a best practice in software architecture, as retrofitting security is often more difficult and less effective (Bass et al., 2021, p. 113). Data platforms handle sensitive business information requiring strong security from day one. Compliance requirements often mandate specific security controls that are easier to implement during initial development. Building security in reduces future technical debt and potential vulnerabilities.
 
 **Trade-offs**: Security measures increase initial setup complexity and may impact development velocity. Some security features can affect user experience through additional authentication steps. Comprehensive security requires ongoing maintenance and updates.
@@ -138,6 +162,8 @@ Aurora was built around a fundamental principle: **make complex data infrastruct
 ### 3. Monitoring and Observability
 
 **Decision**: Implement comprehensive logging and monitoring across all components with clear alerting thresholds.
+
+![Monitoring](../../../assets/case-study/design-decisions/monitoring.png)
 
 **Rationale**: Data pipeline reliability is crucial for business operations, requiring proactive monitoring to prevent and quickly resolve issues. Aurora's target users may lack deep operational expertise, making clear monitoring and alerting essential for successful production deployments. Comprehensive logs enable effective troubleshooting when issues arise.
 
@@ -151,6 +177,8 @@ Aurora was built around a fundamental principle: **make complex data infrastruct
 
 **Decision**: Optimize for vertical scaling with horizontal scaling available through configuration changes.
 
+![Scaling](../../../assets/case-study/design-decisions/scaling.png)
+
 **Rationale**: Aurora's target users typically have workloads that benefit more from powerful individual instances than distributed complexity. Vertical scaling is operationally simpler, requiring only instance type changes rather than distributed system management. Most analytical workloads can be effectively served by modern large EC2 instances.
 
 **Trade-offs**: Vertical scaling has upper limits and can create single points of failure. Costs may be higher than equivalent horizontal scaling for very large workloads. Scaling operations require brief downtime for instance type changes.
@@ -160,6 +188,8 @@ Aurora was built around a fundamental principle: **make complex data infrastruct
 ### 2. Caching Strategy
 
 **Decision**: Implement caching at multiple layers while maintaining data freshness guarantees.
+
+![Caching Strategy](../../../assets/case-study/design-decisions/caching-strategy.png)
 
 **Rationale**: Caching is a fundamental technique for improving performance in data-intensive applications, especially for read-heavy and repetitive workloads (Kleppmann, 2017, p. 73). Aurora's natural language interface can generate similar SQL for related questions, making query result caching particularly effective. Schema embedding caching reduces LLM processing costs for repeated database introspection.
 

@@ -20,8 +20,6 @@ npm install -g aurora-platform-cli
    ```
 2. At the start of deployment, you’ll be prompted to enter your OpenAI API key. If you don’t have one yet, [create a key](https://platform.openai.com/api-keys) following the [official instructions](https://platform.openai.com/docs/libraries#create-and-export-an-api-key).
 
-   ![OpenAI API Key Config](../../../assets/docs/openapi-key.png)
-
 3. Deploy Aurora:
 
    ```bash
