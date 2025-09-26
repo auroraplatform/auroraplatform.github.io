@@ -8,7 +8,7 @@ export default defineConfig({
 
 	integrations: [
 		starlight({
-			favicon: './src/assets/favicon.ico',
+			favicon: './favicon.ico',
 			title: 'Aurora',
 			description: 'An open-source, real-time query platform for visualizing and analyzing Kafka event streams with ClickHouse, Grafana, and AI',
 
